@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lytrium – Política de Privacidad y Términos de Servicio</title>
+
+    <style>
+        :root {
+            --bg: #0f172a;
+            --card: #0b1220;
+            --accent: #38bdf8;
+            --text: #e5e7eb;
+            --muted: #9ca3af;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+            background: radial-gradient(circle at top, #1e293b, #020617);
+            color: var(--text);
+            line-height: 1.6;
+            padding: 24px;
+        }
+        .container {
+            max-width: 900px;
+            margin: auto;
+        }
+        header { text-align: center; margin-bottom: 40px; }
+        header h1 { font-size: 1.8rem; text-transform: uppercase; margin-bottom: 8px; }
+        header p { color: var(--muted); }
+        .badge {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 12px;
+            background: rgba(56, 189, 248, 0.15);
+            color: var(--accent);
+            font-size: 0.8rem;
+            margin-bottom: 12px;
+        }
+        .card {
+            background: rgba(11, 18, 32, 0.9);
+            padding: 24px;
+            border-radius: 14px;
+            margin-bottom: 20px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(4px);
+        }
+        h2 { font-size: 1.3rem; margin-bottom: 16px; }
+        h3 { font-size: 1.05rem; margin-top: 16px; margin-bottom: 8px; }
+        p, li { font-size: 0.95rem; color: var(--muted); }
+        ul { margin-left: 20px; }
+        a { color: var(--accent); text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        footer {
+            margin-top: 40px;
+            text-align: center;
+            font-size: 0.8rem;
+            color: var(--muted);
+        }
+    </style>
+</head>
+
+<body>
+<div class="container">
+
+    <header>
+        <div class="badge">Lytrium – Agencia de IA y Marketing</div>
+        <h1>Política de Privacidad & Términos de Servicio</h1>
+        <p>Última actualización: 10 de diciembre de 2025</p>
+    </header>
+
+    <section class="card">
+        <h2>1. Información General</h2>
+        <p>Lytrium es una agencia de inteligencia artificial y automatización con sede en Colombia, dedicada a desarrollar chatbots, agentes de IA y soluciones inteligentes para pymes en Latinoamérica.</p>
+        <p><strong>Responsable:</strong> Steven Andrés Peinado Páez</p>
+        <p><strong>Email:</strong> <a href="mailto:lytriums@gmail.com">lytriums@gmail.com</a></p>
+        <p><strong>Sitio web:</strong> <a href="https://lytrium.tech">https://lytrium.tech</a></p>
+    </section>
+
+    <section class="card" id="privacy-policy">
+        <h2>2. Política de Privacidad</h2>
+
+        <h3>2.1 Datos que recopilamos</h3>
+        <ul>
+            <li>Nombre, correo electrónico y número de teléfono.</li>
+            <li>Mensajes enviados a nuestros bots o agentes de IA.</li>
+            <li>Datos de uso y métricas de interacción.</li>
+            <li>Datos técnicos básicos: IP aproximada, navegador, sistema operativo.</li>
+        </ul>
+
+        <h3>2.2 Finalidad del tratamiento</h3>
+        <ul>
+            <li>Responder consultas e interactuar mediante chatbots.</li>
+            <li>Mejorar la calidad de los agentes de IA y automatizaciones.</li>
+            <li>Generar reportes internos y analíticas de conversación.</li>
+            <li>Cumplir con obligaciones legales.</li>
+        </ul>
+
+        <h3>2.3 Conservación de datos</h3>
+        <p>Mantenemos la información por el tiempo necesario para ofrecer nuestros servicios o cumplir la normativa vigente.</p>
+
+        <h3>2.4 Terceros</h3>
+        <p>Podemos compartir información con proveedores tecnológicos como Meta (WhatsApp API), Google, OpenAI, MongoDB u otros necesarios para operar nuestros servicios.</p>
+    </section>
+
+    <section class="card" id="terms">
+        <h2>3. Términos de Servicio</h2>
+
+        <h3>3.1 Aceptación</h3>
+        <p>Al usar nuestros servicios o chatbots, aceptas estos términos y condiciones.</p>
+
+        <h3>3.2 Uso permitido</h3>
+        <ul>
+            <li>No utilizar los servicios para actividades ilícitas.</li>
+            <li>No enviar spam, contenido inapropiado ni malicioso.</li>
+            <li>No manipular ni intentar dañar los sistemas de automatización.</li>
+        </ul>
+
+        <h3>3.3 Limitación de responsabilidad</h3>
+        <p>Lytrium no garantiza disponibilidad continua ni ausencia total de errores, y no será responsable de daños derivados del uso de los servicios.</p>
+    </section>
+
+    <section class="card" id="data-deletion">
+        <h2>4. Eliminación de Datos</h2>
+        <p>Si deseas eliminar tus datos personales, envía un correo a <a href="mailto:lytriums@gmail.com">lytriums@gmail.com</a> indicando tu solicitud. Eliminaremos o anonimizaremos toda la información asociada en la medida técnica y legalmente posible.</p>
+    </section>
+
+    <footer>
+        © <span id="year"></span> Lytrium — Todos los derechos reservados.
+    </footer>
+
+</div>
+
+<script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>
