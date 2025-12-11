@@ -1,56 +1,173 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Política de Privacidad – Lytrium</title>
-    <style>
-        body { font-family: Arial, sans-serif; margin: 40px; max-width: 900px; line-height: 1.6; }
-        h1, h2 { color: #111827; }
-        a { color: #2563eb; }
-        small { color: #6b7280; }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Política de Privacidad – Lytrium</title>
+  <style>
+    :root {
+      --bg: #111822;
+      --card: #131b26;
+      --accent: #fbc853;
+      --text: #ffffff;
+      --muted: #9ca3af;
+      --border: rgba(148, 163, 184, 0.2);
+    }
+
+    body {
+      font-family: system-ui, sans-serif;
+      background: #111822;
+      color: var(--text);
+      padding: 40px 16px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .container {
+      max-width: 900px;
+    }
+
+    h1 {
+      font-size: 1.8rem;
+      margin-bottom: 10px;
+    }
+
+    h2 {
+      margin-top: 26px;
+      font-size: 1.25rem;
+      color: var(--accent);
+    }
+
+    h3 {
+      margin-top: 14px;
+      font-size: 1.05rem;
+      color: var(--text);
+    }
+
+    p, li {
+      font-size: 0.95rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    ul { margin-left: 20px; }
+
+    a { color: var(--accent); }
+
+    .card {
+      background: var(--card);
+      padding: 24px;
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      margin-top: 16px;
+    }
+
+    footer {
+      margin-top: 40px;
+      font-size: 0.8rem;
+      color: var(--muted);
+      text-align: center;
+    }
+  </style>
 </head>
+
 <body>
+  <div class="container">
     <h1>Política de Privacidad – Lytrium</h1>
-    <small>Última actualización: 10 de diciembre de 2025</small>
+    <p><strong>Última actualización:</strong> 10 de diciembre de 2025</p>
 
-    <p>En Lytrium (“nosotros”), respetamos y protegemos la privacidad de los usuarios que interactúan con nuestros servicios, incluidos chatbots, agentes de IA, automatizaciones y sitios web asociados al dominio <strong>lytrium.tech</strong>.</p>
+    <div class="card">
+      <h2>1. Responsable del tratamiento</h2>
+      <p>Lytrium es una empresa dedicada al desarrollo de agentes de IA, chatbots avanzados y automatizaciones para pymes en Latinoamérica.</p>
+      <p><strong>Responsable:</strong> Lytrium (propiedad de Steven Andrés Peinado Páez)</p>
+      <p><strong>Correo de contacto:</strong> <a href="mailto:lytriums@gmail.com">lytriums@gmail.com</a></p>
+      <p><strong>Sitio web:</strong> https://lytrium.tech</p>
+    </div>
 
-    <h2>1. Datos que recopilamos</h2>
-    <p>Podemos recopilar los siguientes tipos de datos:</p>
-    <ul>
-        <li>Datos de contacto: nombre, correo electrónico, número de teléfono.</li>
-        <li>Mensajes enviados a nuestros chatbots o formularios.</li>
-        <li>Información técnica básica: dirección IP aproximada, tipo de dispositivo, navegador.</li>
-    </ul>
+    <div class="card">
+      <h2>2. Datos que recopilamos</h2>
+      <p>Según el servicio que utilices, podemos recopilar:</p>
+      <ul>
+        <li>Nombre, correo, número telefónico.</li>
+        <li>Mensajes enviados a nuestros chatbots o agentes de IA.</li>
+        <li>Documentos proporcionados para motores RAG (PDFs, textos, protocolos, menús, etc.)</li>
+        <li>Logs de interacción con WhatsApp API o formularios.</li>
+        <li>Datos técnicos: IP aproximada, tipo de dispositivo, navegador.</li>
+      </ul>
+    </div>
 
-    <h2>2. Finalidad del tratamiento</h2>
-    <p>Usamos la información recopilada para:</p>
-    <ul>
-        <li>Responder consultas y prestar nuestros servicios.</li>
-        <li>Mejorar la calidad de nuestros agentes de IA y automatizaciones.</li>
-        <li>Generar análisis e informes internos para optimizar la experiencia del usuario.</li>
-        <li>Cumplir obligaciones legales aplicables.</li>
-    </ul>
+    <div class="card">
+      <h2>3. Finalidad del tratamiento</h2>
+      <ul>
+        <li>Prestar servicios de IA, automatización y chatbots.</li>
+        <li>Entrenar motores RAG con documentación del cliente.</li>
+        <li>Generar informes de conversación mediante Data Science.</li>
+        <li>Mejorar la calidad del servicio y detectar errores.</li>
+        <li>Cumplir obligaciones legales de protección de datos.</li>
+      </ul>
+    </div>
 
-    <h2>3. Base legal</h2>
-    <p>Tratamos los datos con base en el consentimiento del usuario, la ejecución de un contrato y el interés legítimo de mejorar nuestros servicios.</p>
+    <div class="card">
+      <h2>4. Base legal del tratamiento</h2>
+      <ul>
+        <li>Consentimiento del usuario.</li>
+        <li>Ejecución de un contrato o relación comercial.</li>
+        <li>Interés legítimo en mejorar servicios de IA y atención.</li>
+      </ul>
+    </div>
 
-    <h2>4. Conservación de los datos</h2>
-    <p>Los datos se conservan durante el tiempo necesario para prestar el servicio y cumplir las obligaciones legales correspondientes.</p>
+    <div class="card">
+      <h2>5. Conservación de la información</h2>
+      <p>Mantenemos la información por el tiempo necesario para prestar el servicio, cumplir la relación comercial o responder a obligaciones legales.</p>
+    </div>
 
-    <h2>5. Terceros y proveedores</h2>
-    <p>Podemos utilizar proveedores tecnológicos como Meta (WhatsApp), Google, OpenAI y otros servicios en la nube para operar nuestras soluciones. Estos proveedores pueden tratar datos en nuestro nombre bajo acuerdos de confidencialidad.</p>
+    <div class="card">
+      <h2>6. Encargados y terceros</h2>
+      <p>Utilizamos proveedores tecnológicos que procesan datos en nuestro nombre:</p>
+      <ul>
+        <li>Meta / WhatsApp Business Cloud API</li>
+        <li>Google Cloud (Calendar, Gmail, OAuth)</li>
+        <li>MongoDB Atlas (vector DB y logs)</li>
+        <li>OpenAI y otros proveedores de LLMs</li>
+        <li>n8n (orquestación)</li>
+      </ul>
+      <p>Todos actúan bajo acuerdos de confidencialidad y seguridad.</p>
+    </div>
 
-    <h2>6. Derechos de los usuarios</h2>
-    <p>El usuario puede solicitar el acceso, actualización o eliminación de sus datos personales escribiendo a:</p>
-    <p><strong>Correo de contacto:</strong> <a href="mailto:lytriums@gmail.com">lytriums@gmail.com</a></p>
+    <div class="card">
+      <h2>7. Transferencias internacionales</h2>
+      <p>Los datos pueden ser almacenados o procesados en servidores ubicados fuera de tu país. Adoptamos medidas adecuadas para garantizar la protección de tus datos.</p>
+    </div>
 
-    <h2>7. Eliminación de datos</h2>
-    <p>Si deseas que eliminemos tus datos, envía un correo con el asunto “Eliminación de datos” indicando el canal o bot con el que interactuaste. Procesaremos la solicitud en el menor tiempo posible, sujeto a requisitos legales de conservación.</p>
+    <div class="card">
+      <h2>8. Derechos del usuario</h2>
+      <p>Los usuarios pueden solicitar:</p>
+      <ul>
+        <li>Acceso a sus datos</li>
+        <li>Corrección o actualización</li>
+        <li>Eliminación de información</li>
+        <li>Retiros de consentimiento</li>
+      </ul>
+      <p>Para ejercer estos derechos, escríbenos a: <a href="mailto:lytriums@gmail.com">lytriums@gmail.com</a></p>
+    </div>
 
-    <h2>8. Cambios en esta política</h2>
-    <p>Podemos actualizar esta Política de Privacidad cuando sea necesario. La versión vigente estará siempre disponible en esta URL.</p>
+    <div class="card">
+      <h2>9. Solicitud de eliminación de datos</h2>
+      <p>Para eliminar tus datos, envíanos un correo con el asunto <strong>“Eliminación de Datos – Lytrium”</strong> y verificaremos tu identidad antes de procesar la solicitud.</p>
+    </div>
+
+    <div class="card">
+      <h2>10. Modificaciones</h2>
+      <p>Podemos actualizar esta política en cualquier momento. La versión vigente estará disponible en esta URL.</p>
+    </div>
+
+    <footer>
+      © <span id="year"></span> Lytrium — Política de Privacidad.
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
