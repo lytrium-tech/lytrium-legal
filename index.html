@@ -1,643 +1,360 @@
-<!DOCTYPE html>
-<html lang="es">
+<!doctype html>
+<html lang="es-CO">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Lytrium — Conectamos datos. Automatizamos decisiones.</title>
-  <style>
-    :root {
-      --bg: #111822;
-      --bg-soft: #0c121a;
-      --accent: #fbc853;
-      --accent-soft: rgba(251, 200, 83, 0.1);
-      --text: #ffffff;
-      --muted: #9ca3af;
-      --border-subtle: rgba(148, 163, 184, 0.2);
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
-        "Segoe UI", sans-serif;
-      background: radial-gradient(circle at top, #1f2937 0, #111822 45%, #020617 100%);
-      color: var(--text);
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    .page {
-      max-width: 1120px;
-      margin: 0 auto;
-      padding: 20px 16px 40px;
-      width: 100%;
-      flex: 1;
-    }
-
-    /* HEADER */
-
-    header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-      padding-bottom: 10px;
-    }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .brand img {
-      height: 28px;
-      display: block;
-    }
-
-    .brand-meta {
-      display: flex;
-      flex-direction: column;
-      gap: 2px;
-    }
-
-    .brand-meta span:first-child {
-      font-size: 0.72rem;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: var(--muted);
-    }
-
-    .brand-meta span:last-child {
-      font-size: 0.78rem;
-      color: var(--muted);
-    }
-
-    nav {
-      display: flex;
-      align-items: center;
-      gap: 18px;
-      font-size: 0.86rem;
-    }
-
-    nav a.nav-link {
-      color: var(--muted);
-      position: relative;
-      padding-bottom: 2px;
-    }
-
-    nav a.nav-link::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      bottom: 0;
-      width: 0;
-      height: 1px;
-      background: var(--accent);
-      transition: width 0.18s ease;
-    }
-
-    nav a.nav-link:hover {
-      color: var(--text);
-    }
-
-    nav a.nav-link:hover::after {
-      width: 100%;
-    }
-
-    .nav-pill {
-      border-radius: 999px;
-      padding: 5px 14px;
-      border: 1px solid var(--border-subtle);
-      font-size: 0.78rem;
-      color: var(--muted);
-      background: rgba(15, 23, 42, 0.75);
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .nav-pill-dot {
-      width: 7px;
-      height: 7px;
-      border-radius: 999px;
-      background: #22c55e;
-    }
-
-    /* HERO */
-
-    .hero {
-      display: grid;
-      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1.1fr);
-      gap: 40px;
-      align-items: center;
-      padding-top: 40px;
-      padding-bottom: 40px;
-      border-bottom: 1px solid rgba(15, 23, 42, 0.9);
-    }
-
-    .hero-eyebrow {
-      font-size: 0.78rem;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 10px;
-    }
-
-    .hero-title {
-      font-size: clamp(2.1rem, 3vw, 2.6rem);
-      letter-spacing: -0.03em;
-      line-height: 1.1;
-      margin-bottom: 10px;
-    }
-
-    .hero-title span {
-      color: var(--accent);
-    }
-
-    .hero-tagline {
-      font-size: 0.96rem;
-      color: var(--muted);
-      margin-bottom: 26px;
-      max-width: 420px;
-    }
-
-    .hero-tagline strong {
-      color: var(--text);
-      font-weight: 500;
-    }
-
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-bottom: 10px;
-    }
-
-    .btn-primary {
-      padding: 11px 20px;
-      border-radius: 999px;
-      border: none;
-      background: linear-gradient(135deg, #fbc853, #fbbf24);
-      color: #111822;
-      font-size: 0.9rem;
-      font-weight: 600;
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      box-shadow: 0 12px 25px rgba(0, 0, 0, 0.55);
-    }
-
-    .btn-primary span.icon {
-      font-size: 1rem;
-    }
-
-    .btn-ghost {
-      padding: 10px 16px;
-      border-radius: 999px;
-      border: 1px solid var(--border-subtle);
-      background: transparent;
-      color: var(--muted);
-      font-size: 0.9rem;
-      cursor: pointer;
-    }
-
-    .hero-note {
-      font-size: 0.8rem;
-      color: var(--muted);
-      margin-top: 6px;
-    }
-
-    .hero-note span {
-      color: var(--accent);
-    }
-
-    .hero-card {
-      background: radial-gradient(circle at top, rgba(251, 200, 83, 0.22), transparent 60%),
-                  linear-gradient(145deg, var(--bg-soft), #050811);
-      border-radius: 22px;
-      padding: 22px 22px 20px;
-      border: 1px solid rgba(148, 163, 184, 0.38);
-      box-shadow: 0 22px 50px rgba(0, 0, 0, 0.75);
-    }
-
-    .hero-card-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 16px;
-    }
-
-    .hero-card-title {
-      font-size: 0.9rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--muted);
-    }
-
-    .hero-card-badge {
-      font-size: 0.72rem;
-      padding: 4px 10px;
-      border-radius: 999px;
-      border: 1px solid rgba(15, 23, 42, 0.9);
-      background: rgba(15, 23, 42, 0.82);
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .hero-card-badge-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 999px;
-      background: var(--accent);
-    }
-
-    .hero-card-main-title {
-      font-size: 1.4rem;
-      margin-bottom: 6px;
-    }
-
-    .hero-card-main-sub {
-      font-size: 0.88rem;
-      color: var(--muted);
-      margin-bottom: 18px;
-      max-width: 320px;
-    }
-
-    .metrics-row {
-      display: flex;
-      gap: 14px;
-      margin-bottom: 18px;
-    }
-
-    .metric {
-      flex: 1;
-      padding: 10px 11px;
-      border-radius: 14px;
-      background: rgba(0, 0, 0, 0.35);
-      border: 1px solid rgba(15, 23, 42, 0.9);
-      font-size: 0.8rem;
-    }
-
-    .metric-label {
-      color: var(--muted);
-      margin-bottom: 4px;
-    }
-
-    .metric-value {
-      font-size: 1rem;
-      font-weight: 600;
-      color: var(--accent);
-    }
-
-    .metric-caption {
-      font-size: 0.72rem;
-      color: var(--muted);
-      margin-top: 2px;
-    }
-
-    .card-footer-note {
-      font-size: 0.78rem;
-      color: var(--muted);
-      border-top: 1px solid rgba(15, 23, 42, 0.8);
-      padding-top: 10px;
-      margin-top: 8px;
-    }
-
-    .card-footer-note span {
-      color: var(--accent);
-    }
-
-    /* SECTIONS */
-
-    .section {
-      padding: 30px 0 8px;
-    }
-
-    .section-header {
-      display: flex;
-      justify-content: space-between;
-      gap: 16px;
-      align-items: flex-end;
-      margin-bottom: 16px;
-    }
-
-    .section-title {
-      font-size: 1.1rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-    }
-
-    .section-title span {
-      color: var(--accent);
-    }
-
-    .section-subtitle {
-      font-size: 0.86rem;
-      color: var(--muted);
-      max-width: 420px;
-    }
-
-    .steps {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 14px;
-    }
-
-    .step {
-      background: rgba(15, 23, 42, 0.9);
-      border-radius: 16px;
-      padding: 16px 14px;
-      border: 1px solid rgba(15, 23, 42, 0.9);
-      font-size: 0.86rem;
-    }
-
-    .step-label {
-      font-size: 0.78rem;
-      color: var(--muted);
-      margin-bottom: 4px;
-    }
-
-    .step-title {
-      font-size: 0.96rem;
-      margin-bottom: 4px;
-    }
-
-    .step-body {
-      font-size: 0.8rem;
-      color: var(--muted);
-    }
-
-    .chips-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-top: 12px;
-    }
-
-    .chip {
-      font-size: 0.75rem;
-      padding: 4px 9px;
-      border-radius: 999px;
-      border: 1px solid var(--border-subtle);
-      color: var(--muted);
-      background: rgba(15, 23, 42, 0.8);
-    }
-
-    .chip span {
-      color: var(--accent);
-    }
-
-    .legal-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      font-size: 0.82rem;
-      color: var(--muted);
-      margin-top: 6px;
-    }
-
-    .legal-row a {
-      color: var(--accent);
-    }
-
-    /* FOOTER */
-
-    footer {
-      border-top: 1px solid rgba(15, 23, 42, 0.9);
-      padding: 14px 16px 20px;
-      font-size: 0.8rem;
-      color: var(--muted);
-    }
-
-    .footer-inner {
-      max-width: 1120px;
-      margin: 0 auto;
-      display: flex;
-      justify-content: space-between;
-      gap: 10px;
-      flex-wrap: wrap;
-      align-items: center;
-    }
-
-    .footer-links {
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-    }
-
-    .footer-links a:hover {
-      color: var(--accent);
-    }
-
-    @media (max-width: 900px) {
-      .hero {
-        grid-template-columns: minmax(0, 1fr);
-      }
-      .hero-card {
-        order: -1;
-      }
-      header {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 10px;
-      }
-    }
-
-    @media (max-width: 640px) {
-      nav {
-        width: 100%;
-        justify-content: space-between;
-        flex-wrap: wrap;
-      }
-      .steps {
-        grid-template-columns: minmax(0, 1fr);
-      }
-      .page {
-        padding-inline: 14px;
-      }
-    }
-  </style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>Lytrium | Conectamos datos. Automatizamos decisiones.</title>
+  <meta name="description" content="Lytrium diseña sistemas de automatización inteligente y decisión con Data Science e IA. Arquitecturas elegantes, seguras y escalables para empresas en LATAM." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://TU-USUARIO.github.io/TU-REPO/" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Lytrium | Automatización inteligente y sistemas de decisión" />
+  <meta property="og:description" content="Conectamos datos. Automatizamos decisiones. IA + Data Science para operar con precisión, eficiencia y escalabilidad." />
+  <meta property="og:url" content="https://TU-USUARIO.github.io/TU-REPO/" />
+  <meta property="og:image" content="https://TU-USUARIO.github.io/TU-REPO/assets/og-cover.png" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <!-- Icons -->
+  <link rel="icon" href="assets/favicon.png" />
+  <link rel="apple-touch-icon" href="assets/icon-flat.png" />
+
+  <!-- Fonts (ligero, Apple-ish) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css" />
+
+  <!-- JSON-LD (SEO) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Lytrium",
+    "url": "https://TU-USUARIO.github.io/TU-REPO/",
+    "logo": "https://TU-USUARIO.github.io/TU-REPO/assets/logo-flat.png",
+    "slogan": "Conectamos datos. Automatizamos decisiones.",
+    "sameAs": [
+      "https://www.linkedin.com/company/TU-LINKEDIN",
+      "https://www.instagram.com/TU-INSTAGRAM"
+    ],
+    "contactPoint": [{
+      "@type": "ContactPoint",
+      "contactType": "sales",
+      "email": "hola@lytrium.co",
+      "areaServed": "CO",
+      "availableLanguage": ["es"]
+    }]
+  }
+  </script>
 </head>
+
 <body>
-  <div class="page">
-    <header>
-      <div class="brand">
-        <img src="assets/logo-lytrium-icon-circle.png" alt="Lytrium" />
-        <div class="brand-meta">
-          <span>LYTRIUM</span>
-          <span>Conectamos datos. Automatizamos decisiones.</span>
+  <a class="skip-link" href="#main">Saltar al contenido</a>
+
+  <header class="header">
+    <nav class="nav container">
+      <a class="brand" href="#top" aria-label="Lytrium">
+        <img class="brand__logo" src="assets/logo-flat.png" alt="Lytrium" />
+      </a>
+
+      <button class="nav__toggle" aria-label="Abrir menú" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <div class="nav__links" data-nav>
+        <a href="#productos">Productos</a>
+        <a href="#arquitectura">Arquitectura</a>
+        <a href="#resultados">Resultados</a>
+        <a href="#faq">FAQ</a>
+        <a class="btn btn--ghost" href="#contacto">Hablar con Lytrium</a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main">
+    <!-- HERO -->
+    <section class="hero" id="top">
+      <div class="hero__bg"></div>
+
+      <div class="container hero__grid">
+        <div class="hero__copy">
+          <p class="eyebrow">Automatización inteligente • Data Science • IA</p>
+          <h1>El estándar premium para operar con datos.</h1>
+          <p class="lead">
+            Lytrium diseña <strong>sistemas de decisión</strong>: conectamos datos, estructuramos procesos y automatizamos acciones con criterio.
+          </p>
+
+          <div class="hero__cta">
+            <a class="btn" href="#contacto">Solicitar demo</a>
+            <a class="btn btn--secondary" href="#productos">Ver productos</a>
+          </div>
+
+          <div class="hero__trust">
+            <div class="pill">Precisión como estándar</div>
+            <div class="pill">Elegancia funcional</div>
+            <div class="pill">Escalabilidad consciente</div>
+          </div>
+        </div>
+
+        <div class="hero__panel" aria-hidden="true">
+          <div class="glass">
+            <div class="glass__top">
+              <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+            </div>
+            <div class="glass__body">
+              <div class="metric">
+                <p class="metric__kpi">+40%</p>
+                <p class="metric__lbl">Tickets resueltos sin humano</p>
+              </div>
+              <div class="metric">
+                <p class="metric__kpi">-28%</p>
+                <p class="metric__lbl">Tiempo operativo en procesos repetitivos</p>
+              </div>
+              <div class="metric">
+                <p class="metric__kpi">RAG</p>
+                <p class="metric__lbl">Respuestas basadas en documentos</p>
+              </div>
+              <div class="divider"></div>
+              <p class="mono">Logs → Insights → Mejora continua</p>
+            </div>
+          </div>
+          <div class="glow"></div>
         </div>
       </div>
+    </section>
 
-      <nav>
-        <a class="nav-link" href="#producto">Producto</a>
-        <a class="nav-link" href="#flujo">Cómo funciona</a>
-        <a class="nav-link" href="#legal">Legal</a>
-        <div class="nav-pill">
-          <span class="nav-pill-dot"></span>
-          Pilotos limitados 2025
+    <!-- VALUE -->
+    <section class="section">
+      <div class="container">
+        <div class="section__head">
+          <h2>Más que “bots”: inteligencia operativa.</h2>
+          <p class="muted">
+            Diseñamos automatización con lógica, control y trazabilidad: el lujo es la simplicidad bien ejecutada.
+          </p>
         </div>
-      </nav>
-    </header>
 
-    <main>
-      <!-- HERO -->
-      <section class="hero" id="producto">
+        <div class="cards">
+          <article class="card">
+            <h3>Decisiones, no respuestas</h3>
+            <p>IA conectada a procesos reales: clasificación, enrutamiento, agendamiento, notificaciones y seguimiento.</p>
+          </article>
+          <article class="card">
+            <h3>Rigor de datos</h3>
+            <p>Todo queda registrado: cada interacción alimenta analítica, mejoras y oportunidades comerciales.</p>
+          </article>
+          <article class="card">
+            <h3>Seguridad y confianza</h3>
+            <p>Promesas con fundamento, comunicación sobria, arquitectura escalable.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRODUCTS -->
+    <section class="section section--alt" id="productos">
+      <div class="container">
+        <div class="section__head">
+          <h2>Productos Lytrium</h2>
+          <p class="muted">Diseñados para MRR: replicables, medibles y listos para escalar.</p>
+        </div>
+
+        <div class="grid-2">
+          <article class="product">
+            <div class="badge">Core</div>
+            <h3>RAG Starter Pack</h3>
+            <p>
+              WhatsApp/Web + base de conocimiento (PDFs/FAQs) + logging + métricas.
+              Responde solo con documentos del cliente y escala a humano cuando toca.
+            </p>
+            <ul class="list">
+              <li>Ingesta + embeddings + búsqueda semántica</li>
+              <li>Plantilla n8n lista para clonar</li>
+              <li>Dashboard: resueltas vs. escaladas</li>
+              <li>Reporte mensual de insights</li>
+            </ul>
+            <a class="btn btn--secondary" href="#contacto">Cotizar</a>
+          </article>
+
+          <article class="product">
+            <div class="badge badge--ghost">Add-on</div>
+            <h3>Automatizaciones de Decisión</h3>
+            <p>
+              Integraciones n8n + CRM + Google Workspace + pagos + tickets.
+              Procesos con trazabilidad (no “parches”).
+            </p>
+            <ul class="list">
+              <li>Agendamiento y confirmaciones</li>
+              <li>Enrutamiento inteligente de leads</li>
+              <li>Alertas por anomalías</li>
+              <li>KPIs operativos por canal</li>
+            </ul>
+            <a class="btn btn--secondary" href="#contacto">Ver demo</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ARCHITECTURE -->
+    <section class="section" id="arquitectura">
+      <div class="container">
+        <div class="section__head">
+          <h2>Arquitectura, clara y modular</h2>
+          <p class="muted">
+            RAG + Automatización + Logging + Analítica. Lo que se mide, se optimiza.
+          </p>
+        </div>
+
+        <div class="timeline">
+          <div class="step">
+            <div class="step__n">1</div>
+            <div>
+              <h3>Entrada</h3>
+              <p>WhatsApp / Web → Webhook → n8n</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step__n">2</div>
+            <div>
+              <h3>Contexto</h3>
+              <p>Embeddings → búsqueda en vector DB → top-k fragmentos</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step__n">3</div>
+            <div>
+              <h3>Decisión</h3>
+              <p>LLM + reglas + herramientas (Calendar/CRM/Email)</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step__n">4</div>
+            <div>
+              <h3>Logging</h3>
+              <p>Pregunta, respuesta, contexto, evento, timestamp → base para insights</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- RESULTS -->
+    <section class="section section--alt" id="resultados">
+      <div class="container">
+        <div class="section__head">
+          <h2>Resultados que se sienten en la operación</h2>
+          <p class="muted">
+            Diseño centrado en usuario + UX fluida + responsive + SEO: lo elegante también convierte. :contentReference[oaicite:5]{index=5}
+          </p>
+        </div>
+
+        <div class="stats">
+          <div class="stat">
+            <p class="stat__kpi">Menos fricción</p>
+            <p class="stat__lbl">Experiencia clara, navegación simple y enfoque en acción.</p>
+          </div>
+          <div class="stat">
+            <p class="stat__kpi">Más conversión</p>
+            <p class="stat__lbl">CTAs visibles, lectura cómoda, estructura limpia.</p>
+          </div>
+          <div class="stat">
+            <p class="stat__kpi">Más visibilidad</p>
+            <p class="stat__lbl">Meta tags, schema, performance y contenido indexable.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section" id="faq">
+      <div class="container">
+        <div class="section__head">
+          <h2>Preguntas frecuentes</h2>
+          <p class="muted">Respuestas directas, sin promesas vacías.</p>
+        </div>
+
+        <div class="faq">
+          <details>
+            <summary>¿Lytrium vende software?</summary>
+            <p>No. Diseñamos sistemas inteligentes personalizados conectados a tus procesos y datos.</p>
+          </details>
+          <details>
+            <summary>¿Qué necesito para el RAG Starter Pack?</summary>
+            <p>Documentos (PDFs/FAQs), reglas básicas del negocio y acceso a WhatsApp/Web. Nosotros estructuramos el resto.</p>
+          </details>
+          <details>
+            <summary>¿Cómo garantizan respuestas correctas?</summary>
+            <p>Con RAG basado en tus documentos, control de fuentes, escalamiento a humano y mejora continua con logs.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="section section--cta" id="contacto">
+      <div class="container cta">
         <div>
-          <div class="hero-eyebrow">Agencia de IA para Pymes en LATAM</div>
-          <h1 class="hero-title">
-            Tu canal de WhatsApp<br />
-            convertido en <span>inteligencia de negocio</span>.
-          </h1>
-          <p class="hero-tagline">
-            Nuestro producto estrella: <strong>RAG Starter Pack para WhatsApp</strong>.  
-            Un único sistema que responde, automatiza y aprende de cada conversación.
-          </p>
+          <h2>Construyamos tu sistema de decisión</h2>
+          <p class="muted">Cuéntanos tu operación. Te devolvemos un plan claro: quick wins + roadmap escalable.</p>
+        </div>
 
-          <div class="hero-actions">
-            <button class="btn-primary" onclick="window.location.href='mailto:lytriums@gmail.com?subject=Piloto%20RAG%20Starter%20Pack'">
-              <span class="icon">⚡</span>
-              Solicitar piloto RAG Starter Pack
-            </button>
-            <button class="btn-ghost" onclick="window.location.href='#flujo'">
-              Ver arquitectura en 3 pasos
-            </button>
+        <form class="form" onsubmit="return false;">
+          <div class="form__row">
+            <label>
+              <span>Nombre</span>
+              <input type="text" name="name" placeholder="Tu nombre" autocomplete="name" />
+            </label>
+            <label>
+              <span>Email</span>
+              <input type="email" name="email" placeholder="hola@empresa.com" autocomplete="email" />
+            </label>
           </div>
+          <label>
+            <span>¿Qué quieres automatizar?</span>
+            <textarea name="message" rows="4" placeholder="Ej: leads por WhatsApp, agendamiento, RAG con PDFs, reportes…"></textarea>
+          </label>
+          <button class="btn" type="submit">Enviar</button>
 
-          <p class="hero-note">
-            Diseñado para <span>clínicas, educación, logística, restaurantes y e-commerce</span>.
+          <p class="fine">
+            Al enviar, aceptas ser contactado para una demo. (Luego lo conectas a tu n8n/CRM.)
           </p>
-        </div>
-
-        <aside class="hero-card">
-          <div class="hero-card-header">
-            <div class="hero-card-title">Producto central</div>
-            <div class="hero-card-badge">
-              <span class="hero-card-badge-dot"></span>
-              RAG Starter Pack
-            </div>
-          </div>
-
-          <h2 class="hero-card-main-title">WhatsApp + RAG + Data Science</h2>
-          <p class="hero-card-main-sub">
-            Bot de WhatsApp conectado a tus documentos, con logs en MongoDB y panel de insights
-            sobre lo que de verdad preguntan tus clientes.
-          </p>
-
-          <div class="metrics-row">
-            <div class="metric">
-              <div class="metric-label">Automatización inicial</div>
-              <div class="metric-value">70–80%</div>
-              <div class="metric-caption">de preguntas frecuentes resueltas sin humano.</div>
-            </div>
-            <div class="metric">
-              <div class="metric-label">Tiempo de despliegue</div>
-              <div class="metric-value">&lt; 3 semanas</div>
-              <div class="metric-caption">desde documentos a piloto funcionando.</div>
-            </div>
-          </div>
-
-          <div class="card-footer-note">
-            Incluye: conexión a WhatsApp Cloud API, flujo en n8n, vector DB, logging completo de
-            conversaciones y reporte mensual de insights.
-          </div>
-        </aside>
-      </section>
-
-      <!-- CÓMO FUNCIONA -->
-      <section class="section" id="flujo">
-        <div class="section-header">
-          <h2 class="section-title">Arquitectura en <span>3 pasos</span></h2>
-          <p class="section-subtitle">
-            Un blueprint pensado para ser replicable: mismo patrón, distintos sectores.  
-            Setup + MRR, siempre con capa de datos para mejorar mes a mes.
-          </p>
-        </div>
-
-        <div class="steps">
-          <article class="step">
-            <div class="step-label">Paso 1</div>
-            <div class="step-title">Conectamos tus canales</div>
-            <p class="step-body">
-              Integramos WhatsApp Business API (Meta), formularios o correo mediante n8n.  
-              Todo entra a un mismo flujo controlado.
-            </p>
-          </article>
-
-          <article class="step">
-            <div class="step-label">Paso 2</div>
-            <div class="step-title">RAG sobre tus documentos</div>
-            <p class="step-body">
-              Ingerimos PDFs, protocolos, menús o FAQs en una base vectorial.  
-              El bot solo responde en base a tu información oficial.
-            </p>
-          </article>
-
-          <article class="step">
-            <div class="step-label">Paso 3</div>
-            <div class="step-title">Logs & Data Science</div>
-            <p class="step-body">
-              Guardamos cada conversación en MongoDB y generamos reportes:  
-              temas frecuentes, preguntas sin respuesta y oportunidades de venta.
-            </p>
-          </article>
-        </div>
-
-        <div class="chips-row">
-          <div class="chip"><span>Stack:</span> n8n · Meta Cloud API · MongoDB Atlas · OpenAI</div>
-          <div class="chip"><span>Modelo de negocio:</span> Setup + MRR mensual</div>
-          <div class="chip"><span>Enfoque:</span> productos de datos, no proyectos sueltos</div>
-        </div>
-      </section>
-
-      <!-- LEGAL -->
-      <section class="section" id="legal">
-        <div class="section-header">
-          <h2 class="section-title">Marco <span>legal y confianza</span></h2>
-          <p class="section-subtitle">
-            Tomamos en serio la privacidad y la trazabilidad. Todos los proyectos se implementan
-            con políticas claras de datos y opciones de eliminación.
-          </p>
-        </div>
-
-        <div class="legal-row">
-          <span>Documentos públicos:</span>
-          <a href="/privacy">Política de privacidad</a>
-          <span>·</span>
-          <a href="/terms">Términos y condiciones</a>
-          <span>·</span>
-          <a href="mailto:lytriums@gmail.com?subject=Solicitud%20de%20informaci%C3%B3n%20legal">Contacto legal</a>
-        </div>
-      </section>
-    </main>
-  </div>
-
-  <footer>
-    <div class="footer-inner">
-      <span>© <span id="year"></span> Lytrium — Conectamos datos. Automatizamos decisiones.</span>
-      <div class="footer-links">
-        <a href="/privacy">Privacidad</a>
-        <a href="/terms">Términos</a>
-        <a href="mailto:lytriums@gmail.com">Contacto</a>
+        </form>
       </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__grid">
+      <div class="footer__brand">
+        <img src="assets/logo-flat-invert.png" alt="Lytrium" class="footer__logo" />
+        <p class="muted">Conectamos datos. Automatizamos decisiones.</p>
+      </div>
+
+      <div class="footer__cols">
+        <div>
+          <p class="footer__h">Producto</p>
+          <a href="#productos">RAG Starter Pack</a>
+          <a href="#arquitectura">Arquitectura</a>
+        </div>
+        <div>
+          <p class="footer__h">Empresa</p>
+          <a href="#resultados">Resultados</a>
+          <a href="#contacto">Contacto</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="container footer__bottom">
+      <p class="fine">© <span id="y"></span> Lytrium. Todos los derechos reservados.</p>
+      <p class="fine">Bogotá, Colombia • LATAM</p>
     </div>
   </footer>
 
-  <script>
-    document.getElementById("year").textContent = new Date().getFullYear();
-  </script>
+  <script src="app.js"></script>
 </body>
 </html>
