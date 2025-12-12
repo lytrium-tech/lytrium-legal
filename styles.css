@@ -46,7 +46,7 @@ img{ max-width:100%; display:block; }
   gap: 16px;
 }
 
-.brand__logo{ height: 26px; width:auto; }
+.brand__logo{ height: 40px; width:auto; }
 
 .nav__toggle{
   display:none;
@@ -359,7 +359,7 @@ h1{
 .footer__grid{
   display:flex; justify-content:space-between; gap: 18px; flex-wrap: wrap;
 }
-.footer__logo{ height: 26px; width:auto; margin-bottom: 10px; }
+.footer__logo{ height: 38px; width:auto; margin-bottom: 10px; }
 .footer__cols{
   display:flex; gap: 40px; flex-wrap:wrap;
 }
