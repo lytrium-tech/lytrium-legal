@@ -517,3 +517,106 @@ a{ color:inherit; text-decoration:none; }
 @media (prefers-reduced-motion: reduce){
   *{ animation: none !important; transition: none !important; scroll-behavior: auto !important; }
 }
+
+/* ===== Producto Estrella ===== */
+.featured{
+  padding: 90px 0;
+}
+
+.featured__grid{
+  display:grid;
+  grid-template-columns: 1.1fr .9fr;
+  gap: 48px;
+  align-items:center;
+}
+
+.tag{
+  display:inline-block;
+  padding: 8px 14px;
+  border-radius:999px;
+  background: rgba(251,200,83,.14);
+  border: 1px solid rgba(251,200,83,.3);
+  font-size:12px;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  margin-bottom:14px;
+}
+
+.featured__lead{
+  font-size:18px;
+  color: var(--muted);
+  max-width:48ch;
+  margin: 14px 0 20px;
+}
+
+.featured__points{
+  list-style:none;
+  padding:0;
+  margin:0 0 26px;
+}
+.featured__points li{
+  margin:10px 0;
+  padding-left:22px;
+  position:relative;
+  color: rgba(255,255,255,.78);
+}
+.featured__points li::before{
+  content:"•";
+  position:absolute;
+  left:0;
+  color: var(--accent);
+  font-size:20px;
+  line-height:1;
+}
+
+.featured__actions{
+  display:flex;
+  gap:14px;
+  flex-wrap:wrap;
+}
+
+/* Mock WhatsApp */
+.phone{
+  max-width:320px;
+  margin-left:auto;
+  border-radius:36px;
+  background: #000;
+  padding:14px;
+  box-shadow: 0 30px 80px rgba(0,0,0,.6);
+}
+.phone__screen{
+  background: #0f1a24;
+  border-radius:24px;
+  padding:18px;
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+}
+.chat{
+  max-width:80%;
+  padding:10px 14px;
+  border-radius:14px;
+  font-size:14px;
+}
+.chat.bot{
+  background: rgba(255,255,255,.08);
+  align-self:flex-start;
+}
+.chat.bot.highlight{
+  background: rgba(251,200,83,.18);
+  border:1px solid rgba(251,200,83,.35);
+}
+.chat.user{
+  background: rgba(255,255,255,.16);
+  align-self:flex-end;
+}
+
+/* Responsive */
+@media (max-width: 980px){
+  .featured__grid{
+    grid-template-columns:1fr;
+  }
+  .phone{
+    margin:0 auto;
+  }
+}
