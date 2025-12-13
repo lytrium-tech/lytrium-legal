@@ -99,11 +99,8 @@ img{ max-width: 100%; display: block; }
   padding: 14px 0;
 }
 
-.brand-logo{
-  height: 22px;
-  width: auto;
-  opacity: 0.95;
-}
+.brand-logo { height: 30px; width: auto; }
+
 
 .nav{ display:none; gap: 18px; }
 .nav-link{
@@ -557,7 +554,7 @@ input:focus, textarea:focus{
   background: rgba(11,17,24,0.55);
 }
 .footer-inner{ display:grid; grid-template-columns: 1fr; gap: 14px; align-items:start; }
-.footer-logo{ height: 20px; width:auto; opacity: 0.95; }
+.footer-logo { height: 24px; width: auto; }
 .footer-links{ display:flex; gap: 14px; flex-wrap: wrap; }
 .footer-links a{ color: rgba(245,247,250,0.70); font-weight: 800; }
 .footer-links a:hover{ color: var(--gold); }
