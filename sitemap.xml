@@ -1,27 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <url>
+    <loc>https://lytrium.tech/</loc>
+    <lastmod>2025-12-13</lastmod>
+  </url>
+
   <url>
     <loc>https://lytrium.tech/es/</loc>
     <lastmod>2025-12-13</lastmod>
   </url>
+
   <url>
     <loc>https://lytrium.tech/es/products/</loc>
     <lastmod>2025-12-13</lastmod>
   </url>
+
   <url>
     <loc>https://lytrium.tech/es/about/</loc>
     <lastmod>2025-12-13</lastmod>
   </url>
+
   <url>
     <loc>https://lytrium.tech/es/privacy/</loc>
     <lastmod>2025-12-13</lastmod>
   </url>
+
   <url>
     <loc>https://lytrium.tech/es/terms/</loc>
     <lastmod>2025-12-13</lastmod>
   </url>
+
   <url>
     <loc>https://lytrium.tech/es/cookies/</loc>
     <lastmod>2025-12-13</lastmod>
   </url>
+
 </urlset>
